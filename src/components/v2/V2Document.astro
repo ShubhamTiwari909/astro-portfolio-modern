@@ -1,0 +1,55 @@
+---
+import "@styles/globals.css";
+import { ClientRouter } from "astro:transitions";
+import { siteMeta } from "@data/portfolio-site";
+
+export type Props = {
+  title?: string;
+  description?: string;
+  pageSlug?: string;
+};
+
+const { title = siteMeta.pageTitle, description = siteMeta.pageDescription, pageSlug = "" } =
+  Astro.props;
+---
+
+<!doctype html>
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="google-site-verification"
+      content="8FyyJHihUqrI6y0t-A9_eQdeV7Q2Yt6GxZkJ9yeSy4c"
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta
+      name="keywords"
+      content="portfolio, developer, full-stack, web development, react, node.js, javascript"
+    />
+    <meta name="author" content="Shubham Tiwari" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content={`https://astro-portfolio-vert-one.vercel.app/${pageSlug}`}
+    />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <ClientRouter />
+  </head>
+  <body
+    class="v2-page selection:bg-v2-primary/30 selection:text-v2-primary-fixed antialiased pb-24 md:pb-0"
+  >
+    <slot />
+  </body>
+</html>

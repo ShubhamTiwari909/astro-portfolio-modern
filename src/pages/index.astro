@@ -1,11 +1,57 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+export const prerender = false;
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import V2Document from "@components/v2/V2Document.astro";
+import { V2OpeningScene } from "@components/v2/V2OpeningScene";
+import V2TopNav from "@components/v2/V2TopNav.astro";
+import V2Hero from "@components/v2/hero/V2Hero.astro";
+import V2About from "@components/v2/about/V2About.astro";
+import V2Skills from "@components/v2/skills/V2Skills.astro";
+import V2Experience from "@components/v2/experience/V2Experience.astro";
+import V2Projects from "@components/v2/projects/V2Projects.astro";
+import V2UIShowcase from "@components/v2/ui-showcase/V2UIShowcase.astro";
+import V2Blogs from "@components/v2/blogs/V2Blogs.astro";
+import V2Contact from "@components/v2/contact/V2Contact.astro";
+import V2Footer from "@components/v2/V2Footer.astro";
+import V2BottomNav from "@components/v2/V2BottomNav.astro";
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<V2Document>
+  <V2OpeningScene client:only="react">
+    <V2TopNav />
+    <V2Hero />
+    <V2About />
+    <V2Skills />
+    <V2Experience />
+    <V2Projects />
+    <V2UIShowcase />
+    <V2Blogs />
+    <V2Contact />
+    <V2Footer />
+    <V2BottomNav />
+  </V2OpeningScene>
+</V2Document>
+
+<script>
+  let attempts = 0;
+  const maxAttempts = 180;
+
+  function initTopNavClickStyles() {
+    const links = document.querySelectorAll('#top-nav a[href^="#"]');
+    if (links.length === 0) {
+      if (attempts++ < maxAttempts) requestAnimationFrame(initTopNavClickStyles);
+      return;
+    }
+
+    links.forEach((link) => {
+      link.addEventListener("click", () => {
+        links.forEach((l) => {
+          l.classList.remove("text-v2-primary", "border", "border-v2-primary", "p-2", "rounded-full");
+        });
+        link.classList.add("text-v2-primary", "border", "border-v2-primary", "p-2", "rounded-full");
+      });
+    });
+  }
+
+  initTopNavClickStyles();
+</script>

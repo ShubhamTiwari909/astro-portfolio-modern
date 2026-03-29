@@ -1,0 +1,8 @@
+---
+import { V2BlogsInteractive } from "@components/v2/blogs/V2BlogsInteractive";
+import { fetchDevToBlogs } from "@lib/devto-blogs";
+
+const blogs = await fetchDevToBlogs(import.meta.env.DEV_TO_API_KEY);
+---
+
+<V2BlogsInteractive blogs={blogs} client:visible />

@@ -1,0 +1,10 @@
+---
+import { V2ExperienceInteractive } from "@components/v2/experience/V2ExperienceInteractive";
+import { experienceContent } from "@data/portfolio-site";
+---
+
+<V2ExperienceInteractive
+  cards={experienceContent.cards}
+  client:visible
+  sectionTitle={experienceContent.sectionTitle}
+/>

@@ -1,0 +1,51 @@
+---
+import { Image } from "astro:assets";
+import heroProfile from "@images/hero_profile.png";
+import { V2HeroText } from "@components/v2/hero/V2HeroText";
+import { aboutContent, heroContent } from "@data/portfolio-site";
+---
+
+<section
+  class="relative min-h-screen flex flex-col justify-center px-8 hero-gradient"
+  id="home"
+>
+  <div
+    class="max-w-7xl mx-auto w-full grid md:grid-cols-2 gap-12 items-center"
+  >
+    <V2HeroText
+      client:load
+      description={heroContent.description}
+      eyebrow={heroContent.eyebrow}
+      primaryCta={heroContent.primaryCta}
+      secondaryCta={heroContent.secondaryCta}
+      socialLinks={heroContent.socialLinks}
+      titleLine1={heroContent.titleLine1}
+      titleLine2Accent={heroContent.titleLine2Accent}
+    />
+    <div class="hidden md:block relative">
+      <div
+        class="aspect-square bg-v2-surface-container-high rounded-[2rem] overflow-hidden transform rotate-3 hover:rotate-0 transition-transform duration-700"
+      >
+        <Image
+          src={heroProfile}
+          alt="Shubham profile"
+          class="w-full h-full object-cover mix-blend-luminosity opacity-60 hover:opacity-100 transition-opacity"
+          width={640}
+          height={640}
+        />
+      </div>
+      <div
+        class="absolute -bottom-6 -left-6 p-6 bg-v2-surface-container-highest backdrop-blur-xl border border-v2-outline-variant/20 rounded-2xl shadow-2xl"
+      >
+        <div class="text-v2-primary font-v2-headline font-bold">
+          {aboutContent.statBadge.value}
+        </div>
+        <div
+          class="text-v2-on-surface-variant text-xs uppercase tracking-widest"
+        >
+          {aboutContent.statBadge.label}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

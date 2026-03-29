@@ -1,0 +1,35 @@
+---
+export interface Props {
+  class?: string;
+}
+
+const { class: className, ...rest } = Astro.props;
+
+const items = [
+  { href: "#home", icon: "home", label: "Home", active: true },
+  { href: "#skills", icon: "psychology", label: "Skills", active: false },
+  { href: "#experience", icon: "work_history", label: "Experience", active: false },
+  { href: "#projects", icon: "folder_special", label: "Projects", active: false },
+  { href: "#ui-showcase", icon: "design_services", label: "UI Showcase", active: false },
+  { href: "#blogs", icon: "menu_book", label: "Blog", active: false },
+];
+---
+
+<nav
+  class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-6 pb-6 pt-3 md:hidden bg-v2-background/90 backdrop-blur-2xl border-t border-v2-on-surface/10 shadow-[0_-10px_40px_rgba(0,0,0,0.5)] rounded-t-[24px]"
+  id="top-nav"
+  {...rest}
+>
+  {
+    items.map((item) => (
+      <a
+        class="flex flex-col items-center justify-center text-v2-on-surface/50 hover:text-v2-primary transition-all duration-300 ease-in-out"
+        id={item.label.toLowerCase()}
+        href={item.href}
+      >
+        <span class="material-symbols-outlined">{item.icon}</span>
+        <span class="font-v2-body text-[10px] font-medium">{item.label}</span>
+      </a>
+    ))
+  }
+</nav>

@@ -1,0 +1,12 @@
+---
+import { V2AboutInteractive } from "@components/v2/about/V2AboutInteractive";
+import { aboutContent } from "@data/portfolio-site";
+---
+
+<V2AboutInteractive
+  client:visible
+  heading={aboutContent.heading}
+  paragraphs={aboutContent.paragraphs}
+  statValue={aboutContent.statBadge.value}
+  statLabel={aboutContent.statBadge.label}
+/>

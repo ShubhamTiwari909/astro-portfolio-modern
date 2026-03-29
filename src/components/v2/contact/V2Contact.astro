@@ -1,0 +1,12 @@
+---
+import { V2ContactInteractive } from "@components/v2/contact/V2ContactInteractive";
+import { contactContent } from "@data/portfolio-site";
+---
+
+<V2ContactInteractive
+  availabilityLine={contactContent.availabilityLine}
+  client:visible
+  email={contactContent.email}
+  locationLine={contactContent.locationLine}
+  socialLinks={contactContent.socialLinks}
+/>
