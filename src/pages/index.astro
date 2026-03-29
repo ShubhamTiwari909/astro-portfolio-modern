@@ -46,7 +46,7 @@ import V2BottomNav from "@components/v2/V2BottomNav.astro";
     links.forEach((link) => {
       link.addEventListener("click", () => {
         links.forEach((l) => {
-          l.classList.remove("text-v2-primary", "border", "border-v2-primary", "p-2", "rounded-full");
+          l.classList.remove("text-v2-primary", "border", "border-v2-primary", "p-2");
         });
         link.classList.add("text-v2-primary", "border", "border-v2-primary", "p-2", "rounded-full");
       });
