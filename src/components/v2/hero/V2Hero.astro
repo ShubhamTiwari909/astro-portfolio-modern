@@ -1,6 +1,5 @@
 ---
 import { Image } from "astro:assets";
-import heroProfile from "@images/hero_profile.png";
 import { V2HeroText } from "@components/v2/hero/V2HeroText";
 import { aboutContent, heroContent } from "@data/portfolio-site";
 ---
@@ -27,7 +26,7 @@ import { aboutContent, heroContent } from "@data/portfolio-site";
         class="aspect-square bg-v2-surface-container-high rounded-[2rem] overflow-hidden transform rotate-3 hover:rotate-0 transition-transform duration-700"
       >
         <Image
-          src={heroProfile}
+          src="/images/hero_profile.png"
           alt="Shubham profile"
           class="w-full h-full object-cover mix-blend-luminosity opacity-60 hover:opacity-100 transition-opacity"
           width={640}
